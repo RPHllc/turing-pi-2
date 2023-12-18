@@ -12,11 +12,13 @@ https://www.raspberrypi.com/software/
 ### Get the CM4 OS image, customize it and flash a SD card
 - Launch imager,
 - device: raspberry pi 4
-- Operating System: raspberry pi os lite (64-bit)
+- Operating System: raspberry pi os lite (64-bit) - it is in "other"
 - Storage: pick the flash card
 - Edit settings:
+  - say no to WiFi settings   
   - General   
-    - set hostname (turing-master, turing-worker-01, turing-worker-02)
+    - set hostname (turingNN-master, turingNN-worker-1, turingNN-worker-2)
+      where NN are your initials to allow multiple turing boards in same network
     - set username and password
     - set locale settings
   - Services
