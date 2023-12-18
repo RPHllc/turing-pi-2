@@ -4,8 +4,8 @@
 #### Download and Install Raspberry Pi imager
 https://www.raspberrypi.com/software/
 #### Certify you have ssh public-key
-- cat ~/.ssh/id_rsa.pub  --> if there isn't one,
-- create one from the terminal as follows:
+- on a mac terminal use: cat ~/.ssh/id_rsa.pub  --> if there is something skip creation
+- if cat above did not find anything, create one from the terminal as follows:
   ssh-keygen -t rsa -b 4096 -C pontual@gmail.com (press enter 3 times)
 
 
