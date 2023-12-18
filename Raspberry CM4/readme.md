@@ -16,7 +16,7 @@ https://www.raspberrypi.com/software/
 - Storage: pick the flash card
 - Edit settings:
   - General   
-    - set hostname (turing-master, worker-01, worker-02)
+    - set hostname (turing-master, turing-worker-01, turing-worker-02)
     - set username and password
     - set locale settings
   - Services
