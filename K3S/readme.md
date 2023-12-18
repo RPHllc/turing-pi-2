@@ -3,7 +3,7 @@
 ### Introduction
 You may find information on K3S here https://docs.k3s.io/related-projects
 
-This installation relies on Ansible to automate the boring stuff, Make sure you have Ansible installed in your Mac. 
+This installation relies on Ansible to automate the boring stuff, Make sure you have Ansible installed in your Mac. (if not, "brew install ansible")
 Ansible will also help us in case one make a mess and need to start over <(^_^)>
 
 ### Getting Ansible playbook
@@ -20,10 +20,10 @@ Ansible will also help us in case one make a mess and need to start over <(^_^)>
         turingRP-worker-1.local:
         turingRP-worker-2.local:
 
-  # Required Vars
+  Required Vars
   vars:
     ansible_port: 22
     ansible_user: rp
 
-
+ansible-playbook playbook/site.yml -i inventory.yml
 
