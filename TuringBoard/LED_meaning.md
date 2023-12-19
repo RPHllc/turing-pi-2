@@ -1,4 +1,4 @@
-The LEDs:
+## The LEDs:
 
 - a green LED next to the ATX power connection - turns on when the power supply is attached and powered
 - another green LED next to the ATX power connector - turns on when at least one node is powered
