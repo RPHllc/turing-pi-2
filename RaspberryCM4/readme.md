@@ -39,6 +39,7 @@ https://www.raspberrypi.com/software/
 
 - ssh username:turingNN-master.local
 - respond "yes" when asked and you should get to the CM4 command prompt
+- this is a good time for: `sudo apt update && sudo apt -y upgrade`
 - type exit
 - repeat the process for turingNN-worker-1 and turingNN-worker-2
 
