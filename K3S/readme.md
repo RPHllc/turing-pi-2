@@ -21,13 +21,13 @@ Ansible will also help us in case one make a mess and need to start over <(^\_^)
     - save file
   - sudo reboot now
 
+- repeat for each CM4
+
 - to certify that swap is disabled
 
-  - ssh again into same CM4
+  - ssh into each CM4
   - cat /proc/meminfo | grep SwapTotal
   - the response should show `SwapTotal: 0 kB`
-
-- repeat for each CM4
 
 ### Getting Ansible playbook
 
