@@ -18,9 +18,11 @@ These are step-by-step instructions to configure a turing-pi-2 board with three 
 
     You also find help on the hardware installation in the same directory
 
-### Install K3S (WORK IN PROGRESS)
+### Install K3S
 
     -> go to K3S/readme.md
+
+### Install Longhorn (WORK IN PROGRESS)
 
 ### Install Prometheus and Karvana (WORK IN PROGRESS)
 
