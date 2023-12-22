@@ -14,11 +14,12 @@ You may find information on K3S here https://docs.k3s.io/related-projects
 - configure cgroup:
 
   - sudo nano /boot/cmdline.txt
+
     - this file has a single line, do not delete it
     - add at the end of the line:
-      ```
-       cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory
-      ```
+
+      `cgroup_enable=cpuset cgroup_memory=1  group_enable=memory`
+
   - save file
 
 - sudo reboot now
