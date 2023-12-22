@@ -4,12 +4,6 @@
 
 You may find information on K3S here https://docs.k3s.io/related-projects
 
-[ NOT AUTOMATED YET, THE STEPS BELOW ARE MANUAL FOR NOW:
-This installation relies on Ansible to automate the boring stuff, Make sure you have Ansible installed in your Mac. (if not, "brew install ansible")
-
-Ansible will also help us in case one make a mess and need to start over <(^\_^)>
-]
-
 ### Preparing the RaspberryCM4 OS
 
 - ssh into CM4
@@ -31,12 +25,12 @@ Ansible will also help us in case one make a mess and need to start over <(^\_^)
 
 - repeat for each CM4
 
-- to certify that swap is disabled
+- to certify that swap is disabled (optional)
   - ssh into each CM4
   - cat /proc/meminfo | grep SwapTotal
   - the response should show `SwapTotal: 0 kB`
 
-### Getting Ansible playbook
+### Installing K3S
 
 - goto to https://github.com/k3s-io/k3s-ansible
 - click on CODE and download ZIP
