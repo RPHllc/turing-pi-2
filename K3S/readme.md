@@ -32,22 +32,25 @@ You may find information on K3S here https://docs.k3s.io/related-projects
 
 ### Installing K3S
 
-- goto to https://github.com/k3s-io/k3s-ansible
-- click on CODE and download ZIP
+- Master node
 
-  k3s_cluster:
-  children:
-  server:
-  hosts:
-  turingRP-master.local:
-  agent:
-  hosts:
-  turingRP-worker-1.local:
-  turingRP-worker-2.local:
+  - ssh to your master node
+  - `sudo su`
+  - `curl -sfL https://get.k3s.io | sh -`
+  - wait for the prompt and get a token using
+  - `cat /var/lib/rancher/k3s/server/node-token`
+  - this token will be used to set the worker nodes
+  - type `exit` to leave the superuser mode
 
-  Required Vars
-  vars:
-  ansible_port: 22
-  ansible_user: rp
+- Worker node (repeat for each worker)
 
-ansible-playbook playbook/site.yml -i inventory.yml
+  - ssh to your worker node
+  - `sudo su`
+  - `curl -sfL https://get.k3s.io | K3S_URL=https://<master-node-IP>:6443 K3S_TOKEN=<token> sh -`
+  - wait for the prompt
+  - type `exit` to leave the superuser mode
+
+- Verify
+  - ssh to your master node
+  - type `sudo kubectl get nodes`
+  - you should see the 3 nodes, the roles of the master are control-plane, master and the roles for the workers are "none"
