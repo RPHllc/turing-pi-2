@@ -122,14 +122,14 @@ We will set kubectl to be used from a terminal opened in user machine (Mac) and 
 
   `kubectl get nodes`
 
-```
-  NAME                STATUS  ROLES                 AGE   VERSION
+  ```
+    NAME                STATUS  ROLES                 AGE   VERSION
 
-  turingrp-worker-2   Ready   worker                14h   v1.28.4+k3s2
+    turingrp-worker-2   Ready   worker                14h   v1.28.4+k3s2
 
-  turingrp-master     Ready   control-plane,master  14h   v1.28.4+k3s2
+    turingrp-master     Ready   control-plane,master  14h   v1.28.4+k3s2
 
-  turingrp-worker-1   Ready   worker                14h v1.28.4+k3s2
-```
+    turingrp-worker-1   Ready   worker                14h v1.28.4+k3s2
+  ```
 
 ### ٩(^‿^)۶
