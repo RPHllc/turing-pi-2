@@ -51,7 +51,55 @@ You may find information on K3S here https://docs.k3s.io/related-projects
   - wait for the prompt
   - type `exit` to leave the superuser mode
 
-- Verify
-  - ssh to your master node
-  - type `sudo kubectl get nodes`
-  - you should see the 3 nodes, the roles of the master are control-plane, master and the roles for the workers are "none"
+### Touch up to enable seamless use of kubectl
+
+We will set kubectl to be used from a terminal opened in user machine (Mac) and without need to ssh any node. kubectl will also be accessible at the master node using sudo.
+
+- Prepare your Mac
+
+  - On a terminal:
+  - `brew install kubectl`
+  - `mkdir ~/.kube`
+  - `touch ~/.kube/config`
+
+- ssh to your master node
+
+  - permanently set path to config
+
+    `sudo nano /etc/environment`
+
+  - add the line below (or replace an existing line with KUBECONFIG)
+
+    `KUBECONFIG=/etc/rancher/k3s/k3s.yaml`
+
+  - save file and exit nano
+  - `sudo cat /etc/rancher/k3s/k3s.yaml`
+  - copy the content of this file
+  - reboot master node
+
+    `sudo reboot now`
+
+- on the mac terminal
+  - nano ~/.kube/config
+  - paste the content of the file (from the master node)
+  - change the IP address by the IP address of the master node
+  - save file
+
+### Test everything!!
+
+- on a terminal on the Mac type
+
+  `kubectl get nodes`
+  The list of the three nodes should be available
+
+- ssh to master node and type
+
+  `sudo kubectl get nodes`
+  or
+
+  `sudo su -`
+  `kubectl get nodes`
+
+  The list of the three nodes should be available
+
+### You are done and your K3S clusters are running!
