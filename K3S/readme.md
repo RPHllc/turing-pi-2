@@ -100,6 +100,36 @@ We will set kubectl to be used from a terminal opened in user machine (Mac) and 
   `sudo su -`
   `kubectl get nodes`
 
-  The list of the three nodes should be available
+  The list of the three nodes should be something like:
 
-### You are done and your K3S clusters are running!
+  ```
+  NAME                STATUS  ROLES                 AGE   VERSION
+
+  turingrp-worker-2   Ready   <none>                14h   v1.28.4+k3s2
+
+  turingrp-master     Ready   control-plane,master  14h   v1.28.4+k3s2
+
+  turingrp-worker-1   Ready   <none>                14h v1.28.4+k3s2
+  ```
+
+### You are done and your K3S clusters are running but who likes to see `<none>`?
+
+- (Optional) From you Mac in a terminal, type:
+
+  `kubectl label node turingrp-worker-1 node-role.kubernetes.io/worker=worker`
+
+  `kubectl label node turingrp-worker-2 node-role.kubernetes.io/worker=worker`
+
+  `kubectl get nodes`
+
+```
+  NAME                STATUS  ROLES                 AGE   VERSION
+
+  turingrp-worker-2   Ready   worker                14h   v1.28.4+k3s2
+
+  turingrp-master     Ready   control-plane,master  14h   v1.28.4+k3s2
+
+  turingrp-worker-1   Ready   worker                14h v1.28.4+k3s2
+```
+
+### ٩(^‿^)۶
