@@ -1,0 +1,13 @@
+## Installing Jetson Orion NX
+
+### Hardware
+    Jetson Orion NX 16GB
+    Heat dissipator xxx
+    MVNe card 500GB Gen 4
+
+### Initial software installation
+    Create an account at nvidia.com, you need to be logged on for downloading the software
+    `https://developer.nvidia.com/embedded/jetson-linux-archive`
+    Select Jetson Linux 36.2
+
+
