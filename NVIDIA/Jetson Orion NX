@@ -1,3 +1,4 @@
+
 ## Installing Jetson Orion NX
 
 ### Hardware
@@ -10,4 +11,27 @@
     `https://developer.nvidia.com/embedded/jetson-linux-archive`
     Select Jetson Linux 36.2
 
+### Setting up environment variables on your Linux VM
+    export L4T_RELEASE_PACKAGE=Jetson_Linux_R36.2.0_aarch64.tbz2
+    export SAMPLE_FS_PACKAGE=Tegra_Linux_Sample-Root-Filesystem_R36.2.0_aarch64.tbz2
+    export BOARD=jetson-orin-nano-devkit
 
+### untar the files and assemble the rootfs
+    tar xf ${L4T_RELEASE_PACKAGE}
+    sudo tar xpf ${SAMPLE_FS_PACKAGE} -C Linux_for_Tegra/rootfs/
+    cd Linux_for_Tegra/
+    
+    sed -i 's/cvb_eeprom_read_size = <0x100>/cvb_eeprom_read_size = <0x0>/g' ./bootloader/generic/BCT/tegra234-mb2-bct-misc-p3767-0000.dts
+    
+    sudo ./apply_binaries.sh
+    sudo ./tools/l4t_flash_prerequisites.sh
+
+### create a username, password and hostname
+    sudo ./tools/l4t_create_default_user.sh -u <username> -p <password> -a -n <hostname>
+
+### make sure the USB is mounted in the Linux machine
+    lsusb
+
+### flash the device to MVNE
+
+    sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/generic/cfg/flash_t234_qspi.xml" --showlogs --network usb0 jetson-orin-nano-devkit internal
