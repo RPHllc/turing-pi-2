@@ -1,4 +1,4 @@
-
+-licn
 ## Installing Jetson Orion NX
 
 ### Hardware
@@ -27,11 +27,33 @@
     sudo ./tools/l4t_flash_prerequisites.sh
 
 ### create a username, password and hostname
-    sudo ./tools/l4t_create_default_user.sh -u <username> -p <password> -a -n <hostname>
+    sudo ./tools/l4t_create_default_user.sh --accept-license -u <username> -p <password> -a -n <hostname>
+
+### disable NFSv4 on host
+    sudo nano /etc/default/nfs-kernel-server
+        Add --no-nfs-version 4 to RPCMOUNTDOPTS`
+        Result:
+    RPCMOUNTDOPTS="--manage-gids --no-nfs-version 4"
+
+### Patch nv_enable_remote.sh:
+    nano tools/kernel_flash/initrd_flash/nv_enable_remote.sh
+        Press: CTRL + /
+        This will give you a menu to go to a line.
+        Enter: 222
+
+        The cursor will now be on a empty line between the following to lines, the | simulates your cursor.
+            echo "${cfg_str:1}" > "${cfg}/strings/0x409/configuration"
+    |
+            echo "${udc_dev}" > UDC
+
+    Now on the empty line insert following:
+    echo on > /sys/bus/usb/devices/usb2/power/control
+
+
 
 ### make sure the USB is mounted in the Linux machine
     lsusb
 
 ### flash the device to MVNE
 
-    sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/generic/cfg/flash_t234_qspi.xml" --showlogs --network usb0 jetson-orin-nano-devkit internal
+    sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/generic/cfg/flash_t234_qspi.xml" --showlogs --network usb0 --erase-all jetson-orin-nano-devkit internal
