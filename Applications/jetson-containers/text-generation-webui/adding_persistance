@@ -1,0 +1,40 @@
+# The assumptions:
+    - jetson-containers is installed
+    - you can run text-generation-webui
+
+# The issue we are resolving:
+    - Each time the container is stopped the user settings are lost
+
+# Procedure to add persistance to settings, characters and presets
+
+  cd ~/jetson-containers
+
+  # We need to have the container running during this phase
+  # Note the -d flag because we will need the command prompt
+  ./run.sh -d $(./autotag text-generation-webui)
+
+  # Let’s get the container ID
+  docker ps 
+
+  # Create an environment variable to make our live simpler
+  export CONTAINER_ID=<container_id>
+
+  # Create directories to store settings on the jetson host
+  mkdir -p settings/text-generation-webui
+
+  # Move to new directory to simplify next step
+  cd  settings/text-generation-webui
+
+  # Copy files and directories
+  docker cp $CONTAINER_ID:/opt/text-generation-webui/characters .
+  docker cp $CONTAINER_ID:/opt/text-generation-webui/presets .
+  docker cp $CONTAINER_ID:/opt/text-generation-webui/settings.yaml .
+
+  # Stop and remove the container
+  docker stop $CONTAINER_ID
+
+  # Let's launch the service with persistence activated
+  cd ~/jetson-containers
+  ./run.sh -v $PWD/data/settings/text-generation-webui/settings.yaml:/opt/text-generation-webui/settings.yaml -v $PWD/data/settings/text-generation-webui/presets/:/opt/text-generation-webui/presets/ -v $PWD/data/settings/text-generation-webui/characters/:/opt/text-generation-webui/characters/ $(./autotag text-generation-webui)
+
+ 
