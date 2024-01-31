@@ -10,7 +10,7 @@
   cd ~/jetson-containers
 
   # We need to have the container running during this phase
-  # Note the -d flag because we will need the command prompt
+  # Note the -d flag to detach the container as we need the command prompt
   ./run.sh -d $(./autotag text-generation-webui)
 
   # Let’s get the container ID
@@ -20,10 +20,10 @@
   export CONTAINER_ID=<container_id>
 
   # Create directories to store settings on the jetson host
-  mkdir -p settings/text-generation-webui
+  mkdir -p data/settings/text-generation-webui
 
   # Move to new directory to simplify next step
-  cd  settings/text-generation-webui
+  cd  data/settings/text-generation-webui
 
   # Copy files and directories
   docker cp $CONTAINER_ID:/opt/text-generation-webui/characters .
