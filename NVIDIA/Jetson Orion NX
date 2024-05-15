@@ -9,11 +9,11 @@
 ### Initial software installation
     Create an account at nvidia.com, you need to be logged on for downloading the software
     `https://developer.nvidia.com/embedded/jetson-linux-archive`
-    Select Jetson Linux 36.2
+    Select Jetson Linux 36.3
 
 ### Setting up environment variables on your Linux VM
-    export L4T_RELEASE_PACKAGE=Jetson_Linux_R36.2.0_aarch64.tbz2
-    export SAMPLE_FS_PACKAGE=Tegra_Linux_Sample-Root-Filesystem_R36.2.0_aarch64.tbz2
+    export L4T_RELEASE_PACKAGE=Jetson_Linux_R36.3.0_aarch64.tbz2
+    export SAMPLE_FS_PACKAGE=Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2
     export BOARD=jetson-orin-nano-devkit
 
 ### untar the files and assemble the rootfs
@@ -28,28 +28,6 @@
 
 ### create a username, password and hostname
     sudo ./tools/l4t_create_default_user.sh --accept-license -u <username> -p <password> -a -n <hostname>
-
-### disable NFSv4 on host
-    sudo nano /etc/default/nfs-kernel-server
-        Add --no-nfs-version 4 to RPCMOUNTDOPTS`
-        Result:
-    RPCMOUNTDOPTS="--manage-gids --no-nfs-version 4"
-
-### Patch nv_enable_remote.sh:
-    nano tools/kernel_flash/initrd_flash/nv_enable_remote.sh
-        Press: CTRL + /
-        This will give you a menu to go to a line.
-        Enter: 222
-
-        The cursor will now be on a empty line between the following to lines, the | simulates your cursor.
-            echo "${cfg_str:1}" > "${cfg}/strings/0x409/configuration"
-    |
-            echo "${udc_dev}" > UDC
-
-    Now on the empty line insert following:
-    echo on > /sys/bus/usb/devices/usb2/power/control
-
-
 
 ### make sure the USB is mounted in the Linux machine
     lsusb
