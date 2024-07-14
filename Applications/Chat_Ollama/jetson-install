@@ -1,1 +1,21 @@
+# Installing the Jetson support for Ollama API
 
+This is where the llm will be reside. All we are creating is an application that will respond from API calls.
+Several other applications can hit the ollama api server, a chat service, a summary service, etc.
+
+Before running those steps please make sure you have docker running on jetson and jetson-containers is installed.
+
+ssh into your jetson
+
+```
+docker pull dustynv/ollama:r36.3.0
+```
+
+```
+cd jetson-containers
+jetson-containers run -d --name ollama $(autotag ollama)
+docker exec -it ollama sh
+ollama run llama3
+ollama list
+exit
+```
