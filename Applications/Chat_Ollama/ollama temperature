@@ -1,0 +1,31 @@
+https://github.com/ollama/ollama/blob/main/docs/modelfile.md
+
+After launching jetson-container enter on container with
+
+docker exec -it ollama bash
+
+use "nano modelfile" and add the following lines
+
+FROM llama3
+PARAMETER temperature 0
+
+save it.
+
+enter
+
+"ollama create llama3t0 -f modelfile"
+
+this creates a modified model with the new parameter
+you can verify that everything is correct with
+
+"ollama info llama3t0 --parameters"
+
+then start running the new model with 
+
+"ollama run llama3t0"
+"/bye"
+
+"exit"
+
+=> you may have to restart vscode and the chat container to see the new model listed.
+
