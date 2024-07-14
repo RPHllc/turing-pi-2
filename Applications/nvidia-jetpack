@@ -1,0 +1,7 @@
+# Install JetPack Components on Jetson Linux
+This assumes that the jetson has been flashed and is running the Linux L4T 36.3.
+
+```
+sudo apt update
+sudo apt install nvidia-jetpack
+```
