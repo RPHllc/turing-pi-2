@@ -15,7 +15,7 @@ docker pull dustynv/ollama:r36.3.0
 cd jetson-containers
 jetson-containers run -d --name ollama $(autotag ollama)
 docker exec -it ollama sh
-ollama run llama3
+ollama run llama3.1
 ollama list
 exit
 ```
