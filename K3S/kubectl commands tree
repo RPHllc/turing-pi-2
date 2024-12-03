@@ -1,0 +1,161 @@
+kubectl
+├── apply
+│   ├── -f FILENAME
+│   ├── -f DIRECTORY
+│   └── -f URL
+├── create
+│   ├── deployment
+│   │   └── --image=IMAGE
+│   ├── service
+│   │   ├── clusterip
+│   │   ├── nodeport
+│   │   └── loadbalancer
+│   ├── configmap
+│   │   ├── --from-file=FILE
+│   │   └── --from-literal=KEY=VALUE
+│   └── secret
+│       ├── generic
+│       │   ├── --from-file=FILE
+│       │   └── --from-literal=KEY=VALUE
+│       └── docker-registry
+│           ├── --docker-username=USERNAME
+│           ├── --docker-password=PASSWORD
+│           └── --docker-email=EMAIL
+├── get
+│   ├── pods
+│   │   ├── --all-namespaces
+│   │   ├── -o wide
+│   │   └── --selector=LABEL
+│   ├── services
+│   │   ├── --all-namespaces
+│   │   └── -o wide
+│   ├── deployments
+│   │   ├── --all-namespaces
+│   │   └── -o wide
+│   ├── nodes
+│   │   └── -o wide
+│   └── namespaces
+├── describe
+│   ├── pod POD_NAME
+│   ├── service SERVICE_NAME
+│   ├── deployment DEPLOYMENT_NAME
+│   └── node NODE_NAME
+├── delete
+│   ├── pod POD_NAME
+│   ├── service SERVICE_NAME
+│   ├── deployment DEPLOYMENT_NAME
+│   └── node NODE_NAME
+├── logs
+│   ├── POD_NAME
+│   │   ├── -c CONTAINER_NAME
+│   │   └── --previous
+│   └── -l LABEL
+├── exec
+│   ├── POD_NAME -- COMMAND
+│   └── -it POD_NAME -- /bin/bash
+├── port-forward
+│   ├── pod/POD_NAME LOCAL_PORT:REMOTE_PORT
+│   └── service/SERVICE_NAME LOCAL_PORT:REMOTE_PORT
+├── scale
+│   ├── deployment DEPLOYMENT_NAME --replicas=COUNT
+│   └── statefulset STATEFULSET_NAME --replicas=COUNT
+├── rollout
+│   ├── status deployment/DEPLOYMENT_NAME
+│   ├── history deployment/DEPLOYMENT_NAME
+│   ├── undo deployment/DEPLOYMENT_NAME
+│   └── restart deployment/DEPLOYMENT_NAME
+├── config
+│   ├── view
+│   ├── get-contexts
+│   ├── current-context
+│   ├── use-context CONTEXT_NAME
+│   └── set-context CONTEXT_NAME
+├── top
+│   ├── nodes
+│   └── pods
+├── apply
+│   ├── -f FILENAME
+│   ├── -f DIRECTORY
+│   └── -f URL
+├── edit
+│   ├── pod POD_NAME
+│   ├── service SERVICE_NAME
+│   └── deployment DEPLOYMENT_NAME
+├── patch
+│   ├── pod POD_NAME --patch PATCH
+│   └── deployment DEPLOYMENT_NAME --patch PATCH
+├── label
+│   ├── pod POD_NAME KEY=VALUE
+│   └── node NODE_NAME KEY=VALUE
+├── annotate
+│   ├── pod POD_NAME KEY=VALUE
+│   └── node NODE_NAME KEY=VALUE
+├── cordon NODE_NAME
+├── uncordon NODE_NAME
+├── drain NODE_NAME
+├── taint
+│   ├── node NODE_NAME KEY=VALUE:EFFECT
+│   └── node NODE_NAME KEY-:NoSchedule
+├── auth
+│   ├── can-i VERB RESOURCE
+│   └── reconcile
+├── api-resources
+├── api-versions
+├── version
+├── explain RESOURCE
+├── completion
+│   ├── bash
+│   ├── zsh
+│   ├── fish
+│   └── powershell
+├── proxy
+├── attach POD_NAME
+├── cp
+│   ├── POD_NAME:REMOTE_PATH LOCAL_PATH
+│   └── LOCAL_PATH POD_NAME:REMOTE_PATH
+├── wait
+│   ├── --for=condition=CONDITION pod/POD_NAME
+│   └── --for=delete pod/POD_NAME
+├── run
+│   ├── POD_NAME --image=IMAGE
+│   └── --generator=RUN-POD/V1
+├── expose
+│   ├── pod POD_NAME --port=PORT --target-port=TARGET_PORT
+│   └── deployment DEPLOYMENT_NAME --port=PORT --target-port=TARGET_PORT
+├── autoscale
+│   ├── deployment DEPLOYMENT_NAME --min=MIN --max=MAX --cpu-percent=CPU
+│   └── statefulset STATEFULSET_NAME --min=MIN --max=MAX --cpu-percent=CPU
+├── certificate
+│   ├── approve CERTIFICATE_NAME
+│   └── deny CERTIFICATE_NAME
+├── auth
+│   ├── can-i VERB RESOURCE
+│   └── reconcile
+├── alpha
+│   └── SUBCOMMAND
+├── convert
+│   └── -f FILENAME
+├── diff
+│   └── -f FILENAME
+├── kustomize
+│   └── DIRECTORY
+├── plugin
+│   └── LIST
+├── replace
+│   └── -f FILENAME
+├── rollout
+│   ├── status deployment/DEPLOYMENT_NAME
+│   ├── history deployment/DEPLOYMENT_NAME
+│   ├── undo deployment/DEPLOYMENT_NAME
+│   └── restart deployment/DEPLOYMENT_NAME
+├── scale
+│   ├── deployment DEPLOYMENT_NAME --replicas=COUNT
+│   └── statefulset STATEFULSET_NAME --replicas=COUNT
+├── set
+│   ├── image deployment/DEPLOYMENT_NAME CONTAINER_NAME=IMAGE
+│   ├── resources deployment/DEPLOYMENT_NAME --limits=cpu=LIMIT,memory=LIMIT
+│   ├── selector deployment/DEPLOYMENT_NAME KEY=VALUE
+│   ├── subject rolebinding/ROLEBINDING_NAME --user=USER
+│   └── serviceaccount deployment/DEPLOYMENT_NAME SERVICEACCOUNT
+::contentReference[oaicite:0]{index=0}
+ 
