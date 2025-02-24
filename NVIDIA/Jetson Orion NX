@@ -9,11 +9,11 @@
 ### Initial software installation
     Create an account at nvidia.com, you need to be logged on for downloading the software
     `https://developer.nvidia.com/embedded/jetson-linux-archive`
-    Select Jetson Linux 36.3
+    Select Jetson Linux 36.4
 
 ### Setting up environment variables on your Linux VM
-    export L4T_RELEASE_PACKAGE=Jetson_Linux_R36.3.0_aarch64.tbz2
-    export SAMPLE_FS_PACKAGE=Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2
+    export L4T_RELEASE_PACKAGE=Jetson_Linux_R36.4.3_aarch64.tbz2
+    export SAMPLE_FS_PACKAGE=Tegra_Linux_Sample-Root-Filesystem_R36.4.3_aarch64.tbz2
     export BOARD=jetson-orin-nano-devkit
 
 ### untar the files and assemble the rootfs
